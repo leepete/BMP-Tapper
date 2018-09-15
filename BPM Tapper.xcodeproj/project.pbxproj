@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E7823939214A2261001E1B41 /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7823939214A2261001E1B41 /* Beat Tapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beat Tapper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E782393C214A2261001E1B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E782393E214A2261001E1B41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E7823941214A2261001E1B41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		E7823930214A2260001E1B41 = {
 			isa = PBXGroup;
 			children = (
-				E782393B214A2261001E1B41 /* Metronome */,
+				E782393B214A2261001E1B41 /* BPM Tapper */,
 				E782393A214A2261001E1B41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +46,12 @@
 		E782393A214A2261001E1B41 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E7823939214A2261001E1B41 /* Metronome.app */,
+				E7823939214A2261001E1B41 /* Beat Tapper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E782393B214A2261001E1B41 /* Metronome */ = {
+		E782393B214A2261001E1B41 /* BPM Tapper */ = {
 			isa = PBXGroup;
 			children = (
 				E782393C214A2261001E1B41 /* AppDelegate.swift */,
@@ -61,15 +61,15 @@
 				E7823945214A2261001E1B41 /* LaunchScreen.storyboard */,
 				E7823948214A2261001E1B41 /* Info.plist */,
 			);
-			path = Metronome;
+			path = "BPM Tapper";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E7823938214A2261001E1B41 /* Metronome */ = {
+		E7823938214A2261001E1B41 /* Beat Tapper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E782394B214A2261001E1B41 /* Build configuration list for PBXNativeTarget "Metronome" */;
+			buildConfigurationList = E782394B214A2261001E1B41 /* Build configuration list for PBXNativeTarget "Beat Tapper" */;
 			buildPhases = (
 				E7823935214A2261001E1B41 /* Sources */,
 				E7823936214A2261001E1B41 /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = Metronome;
+			name = "Beat Tapper";
 			productName = Metronome;
-			productReference = E7823939214A2261001E1B41 /* Metronome.app */;
+			productReference = E7823939214A2261001E1B41 /* Beat Tapper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +99,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E7823934214A2260001E1B41 /* Build configuration list for PBXProject "Metronome" */;
+			buildConfigurationList = E7823934214A2260001E1B41 /* Build configuration list for PBXProject "BPM Tapper" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E7823938214A2261001E1B41 /* Metronome */,
+				E7823938214A2261001E1B41 /* Beat Tapper */,
 			);
 		};
 /* End PBXProject section */
@@ -282,12 +282,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B4LQD4KT4M;
-				INFOPLIST_FILE = Metronome/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BPM Tapper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.leepete.Metronome;
+				PRODUCT_BUNDLE_IDENTIFIER = com.leepete.BeatTapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -300,12 +300,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B4LQD4KT4M;
-				INFOPLIST_FILE = Metronome/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BPM Tapper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.leepete.Metronome;
+				PRODUCT_BUNDLE_IDENTIFIER = com.leepete.BeatTapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -315,7 +315,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E7823934214A2260001E1B41 /* Build configuration list for PBXProject "Metronome" */ = {
+		E7823934214A2260001E1B41 /* Build configuration list for PBXProject "BPM Tapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7823949214A2261001E1B41 /* Debug */,
@@ -324,7 +324,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E782394B214A2261001E1B41 /* Build configuration list for PBXNativeTarget "Metronome" */ = {
+		E782394B214A2261001E1B41 /* Build configuration list for PBXNativeTarget "Beat Tapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E782394C214A2261001E1B41 /* Debug */,
