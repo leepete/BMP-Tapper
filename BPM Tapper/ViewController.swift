@@ -30,7 +30,8 @@ class ViewController: UIViewController {
         changeShapeButton(tapButton)
         timerStart(tapButton)
         
-        drawCircleLayer()
+        drawCircleLayer() //draws the dots
+        hideLayer("circleOne", "circleTwo", "circleThree", "circleFour") //hides that layer
 
         
     }
@@ -65,10 +66,28 @@ class ViewController: UIViewController {
 
     
     @IBAction func countBeatsPerMinute(_ button: UIButton) {
+        //Hide initial dotted layer that keeps track of the taps
+        if(taps == 0){
+            hideLayer("circleOne", "circleTwo", "circleThree", "circleFour")
+        }
+        
         //Only allow a maximum of 4 taps before label gets changed
         if(taps < maxTaps){
             taps += 1
             print(taps) //DEBUG
+        }
+        
+        switch taps{
+            case 1:
+                showLayer("circleOne")
+            case 2:
+                showLayer("circleTwo")
+            case 3:
+                showLayer("circleThree")
+            case 4:
+                showLayer("circleFour")
+            default:
+                () // empty tuple - do nothing (break would work as well)
         }
         
         //If 4 taps have been registered
@@ -87,9 +106,12 @@ class ViewController: UIViewController {
         
     }
     
+    //Draw dotted track layer
     func drawCircleLayer(){
+        //Bounds
         let maxX = view.frame.maxX
         let maxY = view.frame.maxY
+        
         //Draw 4 Circles under button to show how many presses have been made
         let circleOne = UIBezierPath(ovalIn:  CGRect(x: maxX/2 - ((maxX/5)) , y: maxY - (maxY/8), width: 10, height: 10))
         let circleTwo = UIBezierPath(ovalIn:  CGRect(x: maxX/2 - ((maxX/4)/4), y: maxY - (maxY/8), width: 10, height: 10))
@@ -97,28 +119,28 @@ class ViewController: UIViewController {
         let circleFour = UIBezierPath(ovalIn:  CGRect(x: maxX/2 + ((maxX/5)), y: maxY - (maxY/8), width: 10, height: 10))
 
         let shapeLayer1 = CAShapeLayer() //on first sublayer
-        shapeLayer1.name = "circleOne"
+        shapeLayer1.name = "circleOne" // make name for layer
         shapeLayer1.path = circleOne.cgPath
         shapeLayer1.fillColor = UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1).cgColor
         shapeLayer1.strokeColor = UIColor.black.cgColor
         shapeLayer1.lineWidth = 2.0
         
         let shapeLayer2 = CAShapeLayer() //on second sublayer
-        shapeLayer2.name = "circleTwo"
+        shapeLayer2.name = "circleTwo" // make name for layer
         shapeLayer2.path = circleTwo.cgPath
         shapeLayer2.fillColor = UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1).cgColor
         shapeLayer2.strokeColor = UIColor.black.cgColor
         shapeLayer2.lineWidth = 2.0
         
         let shapeLayer3 = CAShapeLayer() //on third sublayer
-        shapeLayer3.name = "circleThree"
+        shapeLayer3.name = "circleThree" // make name for layer
         shapeLayer3.path = circleThree.cgPath
         shapeLayer3.fillColor = UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1).cgColor
         shapeLayer3.strokeColor = UIColor.black.cgColor
         shapeLayer3.lineWidth = 2.0
         
         let shapeLayer4 = CAShapeLayer() //on fourth sublayer
-        shapeLayer4.name = "circleFour"
+        shapeLayer4.name = "circleFour" // make name for layer
         shapeLayer4.path = circleFour.cgPath
         shapeLayer4.fillColor = UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1).cgColor
         shapeLayer4.strokeColor = UIColor.black.cgColor
@@ -130,10 +152,26 @@ class ViewController: UIViewController {
         view.layer.addSublayer(shapeLayer4)
     }
     
-    func hideLayer(){
+    //Hide dotted layer
+    func hideLayer(_ circleOne: String, _ circleTwo: String, _ circleThree: String, _ circleFour: String){
         for layer in self.view.layer.sublayers!{
-            if(layer.name == "circleOne"){
+            if(layer.name == circleOne){
                 layer.isHidden = true
+            } else if (layer.name == circleTwo){
+                layer.isHidden = true
+            } else if (layer.name == circleThree){
+                layer.isHidden = true
+            } else if (layer.name == circleFour){
+                layer.isHidden = true
+            }
+        }
+    }
+    
+    //show dotten layer
+    func showLayer(_ circle: String){
+        for layer in self.view.layer.sublayers!{
+            if(layer.name == circle){
+                layer.isHidden = false
             }
         }
     }
