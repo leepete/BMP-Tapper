@@ -21,24 +21,36 @@ class ViewController: UIViewController {
     var taps = 0 //keep track of taps
     let maxTaps = 4 //max of 4 taps to determine and show BPM
     
+    //Bounds
+    let maxWidth = UIScreen.main.bounds.size.width
+    let maxHeight = UIScreen.main.bounds.size.height
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         beatsPerMinuteLabel.isHidden = true//Hide label name
         
         changeShapeButton(tapButton)
         timerStart(tapButton)
         
-        drawCircleLayer() //draws the dots
-        hideLayer("circleOne", "circleTwo", "circleThree", "circleFour") //hides that layer
-
-        
+        drawDottedLayer()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //Draw circle layer under button
+    func drawDottedLayer(){
+        //Draw circles
+        drawCircle("circleOne", maxWidth/2 - ((maxWidth/5)), maxHeight - (maxHeight/8))
+        drawCircle("circleTwo", maxWidth/2 - ((maxWidth/4)/4), maxHeight - (maxHeight/8))
+        drawCircle("circleThree", maxWidth/2 + ((maxWidth/4)/4), maxHeight - (maxHeight/8))
+        drawCircle("circleFour", maxWidth/2 + ((maxWidth/5)), maxHeight - (maxHeight/8))
+        
+        //Hide them initially until button has been pushed
+        hideLayer("circleOne", "circleTwo", "circleThree", "circleFour") //hides that layer
     }
     
     //Change the shape of the button to be circular
@@ -103,53 +115,23 @@ class ViewController: UIViewController {
             taps = 0 //reset the number of taps
             counter = 0 //reset timer
         }
-        
+        button.layer.backgroundColor =  UIColor(red: 0, green: 150, blue: 255, alpha: 1.0).cgColor
     }
     
-    //Draw dotted track layer
-    func drawCircleLayer(){
-        //Bounds
-        let maxX = view.frame.maxX
-        let maxY = view.frame.maxY
+    
+    //Draw circle
+    func drawCircle(_ circleName: String, _ x: CGFloat, _ y: CGFloat){
         
-        //Draw 4 Circles under button to show how many presses have been made
-        let circleOne = UIBezierPath(ovalIn:  CGRect(x: maxX/2 - ((maxX/5)) , y: maxY - (maxY/8), width: 10, height: 10))
-        let circleTwo = UIBezierPath(ovalIn:  CGRect(x: maxX/2 - ((maxX/4)/4), y: maxY - (maxY/8), width: 10, height: 10))
-        let circleThree = UIBezierPath(ovalIn:  CGRect(x: maxX/2 + ((maxX/4)/4), y: maxY - (maxY/8), width: 10, height: 10))
-        let circleFour = UIBezierPath(ovalIn:  CGRect(x: maxX/2 + ((maxX/5)), y: maxY - (maxY/8), width: 10, height: 10))
+        let circle = UIBezierPath(ovalIn:  CGRect(x: x , y: y, width: 10, height: 10))
 
-        let shapeLayer1 = CAShapeLayer() //on first sublayer
-        shapeLayer1.name = "circleOne" // make name for layer
-        shapeLayer1.path = circleOne.cgPath
-        shapeLayer1.fillColor = UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1).cgColor
-        shapeLayer1.strokeColor = UIColor.black.cgColor
-        shapeLayer1.lineWidth = 2.0
+        let shapeLayer = CAShapeLayer() //on first sublayer
+        shapeLayer.name = circleName // make name for layer
+        shapeLayer.path = circle.cgPath
+        shapeLayer.fillColor = UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1).cgColor
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        shapeLayer.lineWidth = 2.0
         
-        let shapeLayer2 = CAShapeLayer() //on second sublayer
-        shapeLayer2.name = "circleTwo" // make name for layer
-        shapeLayer2.path = circleTwo.cgPath
-        shapeLayer2.fillColor = UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1).cgColor
-        shapeLayer2.strokeColor = UIColor.black.cgColor
-        shapeLayer2.lineWidth = 2.0
-        
-        let shapeLayer3 = CAShapeLayer() //on third sublayer
-        shapeLayer3.name = "circleThree" // make name for layer
-        shapeLayer3.path = circleThree.cgPath
-        shapeLayer3.fillColor = UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1).cgColor
-        shapeLayer3.strokeColor = UIColor.black.cgColor
-        shapeLayer3.lineWidth = 2.0
-        
-        let shapeLayer4 = CAShapeLayer() //on fourth sublayer
-        shapeLayer4.name = "circleFour" // make name for layer
-        shapeLayer4.path = circleFour.cgPath
-        shapeLayer4.fillColor = UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1).cgColor
-        shapeLayer4.strokeColor = UIColor.black.cgColor
-        shapeLayer4.lineWidth = 2.0
-        
-        view.layer.addSublayer(shapeLayer1)
-        view.layer.addSublayer(shapeLayer2)
-        view.layer.addSublayer(shapeLayer3)
-        view.layer.addSublayer(shapeLayer4)
+        view.layer.addSublayer(shapeLayer)
     }
     
     //Hide dotted layer
